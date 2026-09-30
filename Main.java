@@ -9,7 +9,7 @@ public class Main {
     }
 
     public int charToNum (char x) {
-        return x == 0 ? 48 : (int) x;
+        return x - '0';
     }
 
     public boolean is2Digits (int x) {
@@ -17,7 +17,8 @@ public class Main {
     }
 
     public boolean isInRange (int a, int b, int num) {
-        return num >= a && num <= b;
+        if (a < b) return num >= a && num <= b;
+        else return num >= b && num <= a;
     }
 
     public boolean isEqual(int a, int b, int c) {
@@ -80,19 +81,19 @@ public class Main {
     public void square (int x) {
         for (int i = 0; i < x; i++) {
             for (int j = 0; j < x; j++) {
-                IO.print("*");
+                System.out.print("*");
             }
-            IO.println();
+            System.out.println();
         }
     }
 
     public void rightTriangle (int x) {
         for (int i = 0; i < x; i++) {
             for (int j = 0; j < x; j++) {
-                if (j >= x - i - 1) IO.print("*");
-                else IO.print(" ");
+                if (j >= x - i - 1) System.out.print("*");
+                else System.out.print(" ");
             }
-            IO.println();
+            System.out.println();
         }
     }
 
@@ -148,11 +149,11 @@ public class Main {
 
 
     private int getInt() {
-        IO.print("Введите целое число: ");
+        System.out.print("Введите целое число: ");
         while (!scanner.hasNextInt()) {
-            IO.println("Ошибка! Ожидалось целое число");
+            System.out.println("Ошибка! Ожидалось целое число");
             scanner.next();
-            IO.print("Введите целое число: ");
+            System.out.print("Введите целое число: ");
         }
         return scanner.nextInt();
     }
@@ -160,16 +161,16 @@ public class Main {
     private int getInt(int min_val, int max_val, boolean have_min, boolean have_max) {
         while (true) {
             int num;
-            IO.print("Введите целое число: ");
+            System.out.print("Введите целое число: ");
             if (!scanner.hasNextInt()) {
-                IO.println("Ошибка! Ожидалось целое число");
+                System.out.println("Ошибка! Ожидалось целое число");
                 scanner.next();
             } else {
                 num = scanner.nextInt();
                 if (num < min_val && have_min)
-                    IO.println("Ошибка! Ожидалось число, большее или равное " + min_val);
+                    System.out.println("Ошибка! Ожидалось число, большее или равное " + min_val);
                 else if (num > max_val && have_max)
-                    IO.println("Ошибка! Ожидалось число, меньшее или равное " + max_val);
+                    System.out.println("Ошибка! Ожидалось число, меньшее или равное " + max_val);
                 else return num;
             }
         }
@@ -178,61 +179,61 @@ public class Main {
     private int getInt(int min_val, int max_val, boolean have_min, boolean have_max, String message) {
         while (true) {
             int num;
-            IO.print(message);
+            System.out.print(message);
             if (!scanner.hasNextInt()) {
-                IO.println("Ошибка! Ожидалось целое число");
+                System.out.println("Ошибка! Ожидалось целое число");
                 scanner.next();
             } else {
                 num = scanner.nextInt();
                 if (num < min_val && have_min)
-                    IO.println("Ошибка! Ожидалось число, большее или равное " + min_val);
+                    System.out.println("Ошибка! Ожидалось число, большее или равное " + min_val);
                 else if (num > max_val && have_max)
-                    IO.println("Ошибка! Ожидалось число, меньшее или равное " + max_val);
+                    System.out.println("Ошибка! Ожидалось число, меньшее или равное " + max_val);
                 else return num;
             }
         }
     }
 
     private int getInt(String message) {
-        IO.print(message);
+        System.out.print(message);
         while (!scanner.hasNextInt()) {
-            IO.println("Ошибка! Ожидалось целое число");
+            System.out.println("Ошибка! Ожидалось целое число");
             scanner.next();
-            IO.print(message);
+            System.out.print(message);
         }
         return scanner.nextInt();
     }
 
     private double getDouble() {
-        IO.print("Введите число: ");
+        System.out.print("Введите число: ");
         while (!scanner.hasNextDouble()) {
-            IO.println("Ошибка! Ожидалось число");
+            System.out.println("Ошибка! Ожидалось число");
             scanner.next();
-            IO.print("Введите число: ");
+            System.out.print("Введите число: ");
         }
         return scanner.nextDouble();
     }
 
     private long getLong() {
-        IO.print("Введите число: ");
+        System.out.print("Введите число: ");
         while (!scanner.hasNextLong()) {
-            IO.println("Ошибка! Ожидалось число");
+            System.out.println("Ошибка! Ожидалось число");
             scanner.next();
-            IO.print("Введите число: ");
+            System.out.print("Введите число: ");
         }
         return scanner.nextLong();
     }
 
     private char getChar() {
         while (true) {
-            IO.print("Введите символ: ");
+            System.out.print("Введите символ: ");
             if (!scanner.hasNextInt()) {
-                IO.println("Ошибка! Ожидалась цифра");
+                System.out.println("Ошибка! Ожидалась цифра");
                 scanner.next();
             } else {
                 int a = scanner.nextInt();
                 if (a >= 0 && a <= 9) return (char) a;
-                IO.println("Ошибка! Ожидалась цифра");
+                System.out.println("Ошибка! Ожидалась цифра");
             }
         }
     }
@@ -257,57 +258,57 @@ public class Main {
         Main obj = new Main();
         int choice = -1;
         while (choice != 0) {
-            IO.println();
-            IO.println("Категории: ");
-            IO.println("1 - Методы");
-            IO.println("2 - Условия");
-            IO.println("3 - Циклы");
-            IO.println("4 - Массивы");
-            IO.println("Выберите 0 для выхода");
+            System.out.println();
+            System.out.println("Категории: ");
+            System.out.println("1 - Методы");
+            System.out.println("2 - Условия");
+            System.out.println("3 - Циклы");
+            System.out.println("4 - Массивы");
+            System.out.println("Выберите 0 для выхода");
             choice = obj.getInt(0, 4, true, true, "Введите номер категории: ");
 
             switch (choice) {
                 case 1 :
                     int choice_1 = -1;
                     while (choice_1 != 0) {
-                        IO.println();
-                        IO.println("Выберите задачу: ");
-                        IO.println("1 - Дробная часть");
-                        IO.println("2 - Букву в число");
-                        IO.println("3 - Двузначное");
-                        IO.println("4 - Диапазон");
-                        IO.println("5 - Равенство");
-                        IO.println("Выберите 0, чтобы вернуться");
+                        System.out.println();
+                        System.out.println("Выберите задачу: ");
+                        System.out.println("1 - Дробная часть");
+                        System.out.println("2 - Букву в число");
+                        System.out.println("3 - Двузначное");
+                        System.out.println("4 - Диапазон");
+                        System.out.println("5 - Равенство");
+                        System.out.println("Выберите 0, чтобы вернуться");
                         choice_1 = obj.getInt(0, 5, true, true, "Введите номер задачи: ");
 
-                        IO.println();
+                        System.out.println();
                         switch (choice_1) {
                             case 1 :
-                                IO.println("Вывести дробную часть");
-                                IO.println("Дробная часть: " + obj.fraction(obj.getDouble()));
+                                System.out.println("Вывести дробную часть");
+                                System.out.println("Дробная часть: " + obj.fraction(obj.getDouble()));
                                 break;
                             case 2 :
-                                IO.println("Вывести код символа");
-                                IO.println("Код символа: " + obj.charToNum(obj.getChar()));
+                                System.out.println("Вывести код символа");
+                                System.out.println("Код символа: " + obj.charToNum(obj.getChar()));
                                 break;
                             case 3 :
-                                IO.println("Проверить число на двузначность");
-                                IO.println("Это число двузначно: " + obj.bool_to_ans(obj.is2Digits(obj.getInt())));
+                                System.out.println("Проверить число на двузначность");
+                                System.out.println("Это число двузначно: " + obj.bool_to_ans(obj.is2Digits(obj.getInt())));
                                 break;
                             case 4 : {
-                                IO.println("Проверить, входит ли число в диапазон");
-                                int a = obj.getInt("Введите нижнюю границу диапазона: ");
-                                int b = obj.getInt(a, 0, true, false, "Введите верхнюю границу диапазона: ");
+                                System.out.println("Проверить, входит ли число в диапазон");
+                                int a = obj.getInt("Введите первую границу диапазона: ");
+                                int b = obj.getInt("Введите вторую границу диапазона: ");
                                 int num = obj.getInt();
-                                IO.println("Это число входит в диапазон: " + obj.bool_to_ans(obj.isInRange(a, b, num)));
+                                System.out.println("Это число входит в диапазон: " + obj.bool_to_ans(obj.isInRange(a, b, num)));
                                 break;
                             }
                             case 5 : {
-                                IO.println("Проверить 3 числа на равенство");
+                                System.out.println("Проверить 3 числа на равенство");
                                 int a = obj.getInt("Введите число 1: ");
                                 int b = obj.getInt("Введите число 2: ");
                                 int c = obj.getInt("Введите число 3: ");
-                                IO.println("Эти числа равны: " + obj.bool_to_ans(obj.isEqual(a, b, c)));
+                                System.out.println("Эти числа равны: " + obj.bool_to_ans(obj.isEqual(a, b, c)));
                                 break;
                             }
                             case 0 :
@@ -319,42 +320,42 @@ public class Main {
                 case 2 :
                     int choice_2 = -1;
                     while (choice_2 != 0) {
-                        IO.println();
-                        IO.println("Выберите задачу: ");
-                        IO.println("1 - Модуль числа");
-                        IO.println("2 - Тридцать пять");
-                        IO.println("3 - Тройной максимум");
-                        IO.println("4 - Двойная сумма");
-                        IO.println("5 - День недели");
-                        IO.println("Выберите 0, чтобы вернуться");
+                        System.out.println();
+                        System.out.println("Выберите задачу: ");
+                        System.out.println("1 - Модуль числа");
+                        System.out.println("2 - Тридцать пять");
+                        System.out.println("3 - Тройной максимум");
+                        System.out.println("4 - Двойная сумма");
+                        System.out.println("5 - День недели");
+                        System.out.println("Выберите 0, чтобы вернуться");
                         choice_2 = obj.getInt(0, 5, true, true, "Введите номер задачи: ");
 
-                        IO.println();
+                        System.out.println();
                         switch (choice_2) {
                             case 1 :
-                                IO.println("Найти модуль числа");
-                                IO.println("Модуль числа: " + obj.abs(obj.getInt()));
+                                System.out.println("Найти модуль числа");
+                                System.out.println("Модуль числа: " + obj.abs(obj.getInt()));
                                 break;
                             case 2 :
-                                IO.println("Проверить, кратно ли число 3 или 5 и не кратно 15");
-                                IO.println("Ответ: " + obj.bool_to_ans(obj.is35(obj.getInt())));
+                                System.out.println("Проверить, кратно ли число 3 или 5 и не кратно 15");
+                                System.out.println("Ответ: " + obj.bool_to_ans(obj.is35(obj.getInt())));
                                 break;
                             case 3 :
-                                IO.println("Найти максимальное из 3 чисел");
+                                System.out.println("Найти максимальное из 3 чисел");
                                 int x = obj.getInt("Введите число 1: ");
                                 int y = obj.getInt("Введите число 2: ");
                                 int z = obj.getInt("Введите число 3: ");
-                                IO.println("Максимальное из них: " + obj.max3(x, y, z));
+                                System.out.println("Максимальное из них: " + obj.max3(x, y, z));
                                 break;
                             case 4 :
-                                IO.println("Вывести сумму чисел. Если она в промежутке от 10 до 19, то вывести 20");
+                                System.out.println("Вывести сумму чисел. Если она в промежутке от 10 до 19, то вывести 20");
                                 int a = obj.getInt("Введите первое число: ");
                                 int b = obj.getInt("Введите второе число: ");
-                                IO.println("Ответ: " + obj.sum2(a, b));
+                                System.out.println("Ответ: " + obj.sum2(a, b));
                                 break;
                             case 5 : {
-                                IO.println("Вывести название дня недели, соответствующего введённому номеру");
-                                IO.println("Название: " + obj.day(obj.getInt("Введите номер дня недели: ")));
+                                System.out.println("Вывести название дня недели, соответствующего введённому номеру");
+                                System.out.println("Название: " + obj.day(obj.getInt("Введите номер дня недели: ")));
                                 break;
                             }
                             case 0 :
@@ -366,36 +367,36 @@ public class Main {
                 case 3 :
                     int choice_3 = -1;
                     while (choice_3 != 0) {
-                        IO.println();
-                        IO.println("Выберите задачу: ");
-                        IO.println("1 - Числа подряд");
-                        IO.println("2 - Четные числа");
-                        IO.println("3 - Длина числа");
-                        IO.println("4 - Квадрат");
-                        IO.println("5 - Правый треугольник");
-                        IO.println("Выберите 0, чтобы вернуться");
+                        System.out.println();
+                        System.out.println("Выберите задачу: ");
+                        System.out.println("1 - Числа подряд");
+                        System.out.println("2 - Четные числа");
+                        System.out.println("3 - Длина числа");
+                        System.out.println("4 - Квадрат");
+                        System.out.println("5 - Правый треугольник");
+                        System.out.println("Выберите 0, чтобы вернуться");
                         choice_3 = obj.getInt(0, 5, true, true, "Введите номер задачи: ");
 
-                        IO.println();
+                        System.out.println();
                         switch (choice_3) {
                             case 1 :
-                                IO.println("Вывести строку из чисел от 0 до N");
-                                IO.println(obj.listNums(obj.getInt("Введите N: ")));
+                                System.out.println("Вывести строку из чисел от 0 до N");
+                                System.out.println(obj.listNums(obj.getInt(0, -1, true, false, "Введите N: ")));
                                 break;
                             case 2 :
-                                IO.println("Вывести строку из чётных чисел от 0 до N");
-                                IO.println(obj.chet(obj.getInt("Введите N: ")));
+                                System.out.println("Вывести строку из чётных чисел от 0 до N");
+                                System.out.println(obj.chet(obj.getInt(0, -1, true, false, "Введите N: ")));
                                 break;
                             case 3 :
-                                IO.println("Вывести длину числа");
-                                IO.println("Длина числа: " + obj.numLen(obj.getLong()));
+                                System.out.println("Вывести длину числа");
+                                System.out.println("Длина числа: " + obj.numLen(obj.getLong()));
                                 break;
                             case 4 :
-                                IO.println("Вывести квадрат из '*' с длиной стороны N");
+                                System.out.println("Вывести квадрат из '*' с длиной стороны N");
                                 obj.square(obj.getInt("Введите N: "));
                                 break;
                             case 5 :
-                                IO.println("Вывести треугольник из '*' с длиной катетов N. Катеты - нижняя и правая сторона");
+                                System.out.println("Вывести треугольник из '*' с длиной катетов N. Катеты - нижняя и правая сторона");
                                 obj.rightTriangle(obj.getInt("Введите N: "));
                                 break;
                             case 0 :
@@ -407,63 +408,63 @@ public class Main {
                 case 4 :
                     int choice_4 = -1;
                     while (choice_4 != 0) {
-                        IO.println();
-                        IO.println("Выберите задачу: ");
-                        IO.println("1 - Поиск первого значения");
-                        IO.println("2 - Поиск максимального");
-                        IO.println("3 - Добавление массива в массив");
-                        IO.println("4 - Возвратный реверс");
-                        IO.println("5 - Все вхождения");
-                        IO.println("Выберите 0, чтобы вернуться");
+                        System.out.println();
+                        System.out.println("Выберите задачу: ");
+                        System.out.println("1 - Поиск первого значения");
+                        System.out.println("2 - Поиск максимального");
+                        System.out.println("3 - Добавление массива в массив");
+                        System.out.println("4 - Возвратный реверс");
+                        System.out.println("5 - Все вхождения");
+                        System.out.println("Выберите 0, чтобы вернуться");
                         choice_4 = obj.getInt(0, 5, true, true, "Введите номер задачи: ");
 
-                        IO.println();
+                        System.out.println();
                         switch (choice_4) {
                             case 1 : {
-                                IO.println("Найти первое вхождение заданного числа");
+                                System.out.println("Найти первое вхождение заданного числа");
                                 int[] arr = obj.getArray();
                                 int a = obj.getInt("Введите число для поиска: ");
-                                IO.println("Введённый массив: " + Arrays.toString(arr) + "; искать: " + a);
-                                IO.println("Индекс первого искомого элемента: " + obj.findFirst(arr, a));
+                                System.out.println("Введённый массив: " + Arrays.toString(arr) + "; искать: " + a);
+                                System.out.println("Индекс первого искомого элемента: " + obj.findFirst(arr, a));
 
                                 break;
                             }
                             case 2 : {
-                                IO.println("Найти максимальное по модулю число в массиве");
+                                System.out.println("Найти максимальное по модулю число в массиве");
                                 int[] arr = obj.getArray();
-                                IO.println("Введённый массив: " + Arrays.toString(arr));
-                                IO.println("Максимум по модулю: " + obj.maxAbs(arr));
+                                System.out.println("Введённый массив: " + Arrays.toString(arr));
+                                System.out.println("Максимум по модулю: " + obj.maxAbs(arr));
 
                                 break;
                             }
                             case 3 : {
-                                IO.println("Добавить один массив в другой перед заданным индексом");
-                                IO.println("Введите основной массив:");
+                                System.out.println("Добавить один массив в другой перед заданным индексом");
+                                System.out.println("Введите основной массив:");
                                 int[] arr_a = obj.getArray();
-                                IO.println("Введите добавочный массив:");
+                                System.out.println("Введите добавочный массив:");
                                 int[] arr_b = obj.getArray();
                                 int ind = obj.getInt(0, arr_a.length, true, true, "Введите индекс для добавления: ");
-                                IO.println("Основной массив: " + Arrays.toString(arr_a));
-                                IO.println("Добавочный массив: " + Arrays.toString(arr_b));
-                                IO.println("Точка добавления: " + ind);
-                                IO.println("Результат объединения: " + Arrays.toString(obj.add(arr_a, arr_b, ind)));
+                                System.out.println("Основной массив: " + Arrays.toString(arr_a));
+                                System.out.println("Добавочный массив: " + Arrays.toString(arr_b));
+                                System.out.println("Точка добавления: " + ind);
+                                System.out.println("Результат объединения: " + Arrays.toString(obj.add(arr_a, arr_b, ind)));
 
                                 break;
                             }
                             case 4 : {
-                                IO.println("Создать массив, инвертированный введённому");
+                                System.out.println("Создать массив, инвертированный введённому");
                                 int[] arr = obj.getArray();
-                                IO.println("Введённый массив: " + Arrays.toString(arr));
-                                IO.println("Инвертированный массив: " + Arrays.toString(obj.reverseBack(arr)));
+                                System.out.println("Введённый массив: " + Arrays.toString(arr));
+                                System.out.println("Инвертированный массив: " + Arrays.toString(obj.reverseBack(arr)));
 
                                 break;
                             }
                             case 5 : {
-                                IO.println("Найти все вхождения введённого элемента");
+                                System.out.println("Найти все вхождения введённого элемента");
                                 int[] arr = obj.getArray();
                                 int a = obj.getInt("Введите число для поиска: ");
-                                IO.println("Введённый массив: " + Arrays.toString(arr) + "; искать: " + a);
-                                IO.println("Индексы всех искомых элементов: " + Arrays.toString(obj.findAll(arr, a)));
+                                System.out.println("Введённый массив: " + Arrays.toString(arr) + "; искать: " + a);
+                                System.out.println("Индексы всех искомых элементов: " + Arrays.toString(obj.findAll(arr, a)));
 
                                 break;
                             }
@@ -474,7 +475,7 @@ public class Main {
                     }
                     break;
                 case 0 :
-                    IO.println("Работа завершена.");
+                    System.out.println("Работа завершена.");
                     break;
             }
 
